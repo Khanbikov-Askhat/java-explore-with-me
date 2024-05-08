@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import ru.practicum.explorewithme.exception.dto.ErrorResponse;
 
 import java.util.Map;
 
@@ -12,7 +13,7 @@ public class ErrorHandler {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, String> handleStatisticValidationException(StatisticValidationException e) {
-        return Map.of("Validation for statistic failed", e.getMessage());
+    public ErrorResponse handleStatisticValidationException(StatisticValidationException e) {
+        return new ErrorResponse("Validation for statistic failed", e.getMessage());
     }
 }
