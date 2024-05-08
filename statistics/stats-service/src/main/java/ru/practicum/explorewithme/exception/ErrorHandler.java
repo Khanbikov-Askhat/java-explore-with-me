@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.practicum.explorewithme.exception.dto.ErrorResponse;
 
-import java.util.Map;
 
 @RestControllerAdvice
 public class ErrorHandler {
