@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.practicum.explorewithme.event.model.Location;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Data
 @AllArgsConstructor
@@ -16,6 +13,7 @@ import javax.validation.constraints.Size;
 public class NewEventDto {
 
     @NotNull
+    @NotBlank
     @Size(min = 20, max = 2000, message = "Длина аннотации должна быть от 20 до 2000.")
     private String annotation;
 
@@ -24,6 +22,7 @@ public class NewEventDto {
     private Long category;
 
     @NotNull
+    @NotBlank
     @Size(min = 20, max = 7000, message = "Длина полного описания должда быть от 20 до 7000.")
     private String description;
 
@@ -35,7 +34,7 @@ public class NewEventDto {
 
     private Boolean paid;
 
-    @PositiveOrZero
+    @Positive
     private Integer participantLimit;
 
     private Boolean requestModeration;
