@@ -1,4 +1,4 @@
-package ru.practicum.explorewithme.exception;
+package ru.practicum.explorewithme.exception.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -12,7 +12,7 @@ import static ru.practicum.explorewithme.constant.Constant.TIME_FORMAT;
 
 @Data
 @RequiredArgsConstructor
-public class ApiError {
+public class ErrorResponse {
 
     private final HttpStatus status;
     private final String reason;
