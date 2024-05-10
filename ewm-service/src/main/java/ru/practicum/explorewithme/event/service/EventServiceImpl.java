@@ -70,6 +70,9 @@ public class EventServiceImpl implements EventService {
         User user = userService.findUserById(userId);
         Category category = categoryService.findCategory(newEventDto.getCategory());
         Event event = EventMapper.toNewEvent(newEventDto, user, category);
+        if (event.getParticipantLimit() < 0) {
+            throw new DataValidationException("Количество участников не может быть отрицательным");
+        }
         validateEventTimeByUser(event.getEventDate());
         event = eventRepository.save(event);
         EventFullDto dto = EventMapper.toEventFullDto(event);
