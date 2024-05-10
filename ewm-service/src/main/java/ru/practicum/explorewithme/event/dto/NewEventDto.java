@@ -18,7 +18,6 @@ public class NewEventDto {
     private String annotation;
 
     @NotNull
-    @Positive
     private Long category;
 
     @NotNull
@@ -34,7 +33,7 @@ public class NewEventDto {
 
     private Boolean paid;
 
-    @Positive
+    @PositiveOrZero
     private Integer participantLimit;
 
     private Boolean requestModeration;
