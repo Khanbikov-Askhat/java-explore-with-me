@@ -30,6 +30,7 @@ public class CategoryAdminController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void removeCategory(@PathVariable Long catId) {
         log.info("Получен запрос DELETE /admin/categories/{}", catId);
+        categoryService.removeCategory(catId);
         log.info("Удалена категория с ID: {}", catId);
     }
 
