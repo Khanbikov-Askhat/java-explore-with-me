@@ -13,6 +13,7 @@ import ru.practicum.explorewithme.exception.dto.ErrorResponse;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Collections;
 
 @Slf4j
@@ -25,9 +26,8 @@ public class ErrorHandler {
         log.error("Ошибка валидации параметра");
         StringWriter out = new StringWriter();
         e.printStackTrace(new PrintWriter(out));
-        String stackTrace = out.toString();
         return new ErrorResponse(HttpStatus.BAD_REQUEST, "Ошибка валидации параметра", e.getMessage(),
-                Collections.singletonList(stackTrace), LocalDateTime.now());
+                Collections.singletonList(Arrays.toString(e.getStackTrace())), LocalDateTime.now());
     }
 
     @ExceptionHandler
@@ -36,9 +36,8 @@ public class ErrorHandler {
         log.error("Ошибка в поступивших данных", e);
         StringWriter out = new StringWriter();
         e.printStackTrace(new PrintWriter(out));
-        String stackTrace = out.toString();
         return new ErrorResponse(HttpStatus.BAD_REQUEST, "Ошибка в поступивших данных", e.getMessage(),
-                Collections.singletonList(stackTrace), LocalDateTime.now());
+                Collections.singletonList(Arrays.toString(e.getStackTrace())), LocalDateTime.now());
     }
 
     @ExceptionHandler
@@ -47,9 +46,8 @@ public class ErrorHandler {
         log.error("Нарушено ограничение целостности базы данных");
         StringWriter out = new StringWriter();
         e.printStackTrace(new PrintWriter(out));
-        String stackTrace = out.toString();
         return new ErrorResponse(HttpStatus.CONFLICT, "Конфликт во время выполнения операции с поступившими данными",
-                e.getMessage(), Collections.singletonList(stackTrace), LocalDateTime.now());
+                e.getMessage(), Collections.singletonList(Arrays.toString(e.getStackTrace())), LocalDateTime.now());
     }
 
     @ExceptionHandler
@@ -58,9 +56,8 @@ public class ErrorHandler {
         log.error("Конфликт при выполнении запроса");
         StringWriter out = new StringWriter();
         e.printStackTrace(new PrintWriter(out));
-        String stackTrace = out.toString();
         return new ErrorResponse(HttpStatus.CONFLICT, "Конфликт во время выполнения операции с поступившими данными",
-                e.getMessage(), Collections.singletonList(stackTrace), LocalDateTime.now());
+                e.getMessage(), Collections.singletonList(Arrays.toString(e.getStackTrace())), LocalDateTime.now());
     }
 
     @ExceptionHandler
@@ -69,9 +66,8 @@ public class ErrorHandler {
         log.error("Ошибка поиска категории", e);
         StringWriter out = new StringWriter();
         e.printStackTrace(new PrintWriter(out));
-        String stackTrace = out.toString();
         return new ErrorResponse(HttpStatus.NOT_FOUND, "Ошибка поиска категории", e.getMessage(),
-                Collections.singletonList(stackTrace), LocalDateTime.now());
+                Collections.singletonList(Arrays.toString(e.getStackTrace())), LocalDateTime.now());
     }
 
     @ExceptionHandler
@@ -80,9 +76,8 @@ public class ErrorHandler {
         log.error("Ошибка поиска пользователя");
         StringWriter out = new StringWriter();
         e.printStackTrace(new PrintWriter(out));
-        String stackTrace = out.toString();
         return new ErrorResponse(HttpStatus.NOT_FOUND, "Ошибка поиска пользователя", e.getMessage(),
-                Collections.singletonList(stackTrace), LocalDateTime.now());
+                Collections.singletonList(Arrays.toString(e.getStackTrace())), LocalDateTime.now());
     }
 
     @ExceptionHandler
@@ -91,9 +86,8 @@ public class ErrorHandler {
         log.error("Ошибка поиска события");
         StringWriter out = new StringWriter();
         e.printStackTrace(new PrintWriter(out));
-        String stackTrace = out.toString();
         return new ErrorResponse(HttpStatus.NOT_FOUND, "Ошибка поиска события", e.getMessage(),
-                Collections.singletonList(stackTrace), LocalDateTime.now());
+                Collections.singletonList(Arrays.toString(e.getStackTrace())), LocalDateTime.now());
     }
 
     @ExceptionHandler
@@ -102,9 +96,8 @@ public class ErrorHandler {
         log.error("Ошибка поиска подборки");
         StringWriter out = new StringWriter();
         e.printStackTrace(new PrintWriter(out));
-        String stackTrace = out.toString();
         return new ErrorResponse(HttpStatus.NOT_FOUND, "Ошибка поиска подборки", e.getMessage(),
-                Collections.singletonList(stackTrace), LocalDateTime.now());
+                Collections.singletonList(Arrays.toString(e.getStackTrace())), LocalDateTime.now());
     }
 
     @ExceptionHandler
@@ -113,9 +106,8 @@ public class ErrorHandler {
         log.error("Ошибка поиска запроса на участие");
         StringWriter out = new StringWriter();
         e.printStackTrace(new PrintWriter(out));
-        String stackTrace = out.toString();
         return new ErrorResponse(HttpStatus.NOT_FOUND, "Ошибка поиска запроса на участие", e.getMessage(),
-                Collections.singletonList(stackTrace), LocalDateTime.now());
+                Collections.singletonList(Arrays.toString(e.getStackTrace())), LocalDateTime.now());
     }
 
     @ExceptionHandler
@@ -124,9 +116,8 @@ public class ErrorHandler {
         log.error("Отстутсвует необходимый параметр запроса");
         StringWriter out = new StringWriter();
         e.printStackTrace(new PrintWriter(out));
-        String stackTrace = out.toString();
         return new ErrorResponse(HttpStatus.BAD_REQUEST, "Отстутсвует необходимый параметр запроса", e.getMessage(),
-                Collections.singletonList(stackTrace), LocalDateTime.now());
+                Collections.singletonList(Arrays.toString(e.getStackTrace())), LocalDateTime.now());
     }
 
     @ExceptionHandler
@@ -135,9 +126,8 @@ public class ErrorHandler {
         log.error("Некорректный запрос");
         StringWriter out = new StringWriter();
         e.printStackTrace(new PrintWriter(out));
-        String stackTrace = out.toString();
         return new ErrorResponse(HttpStatus.BAD_REQUEST, "Некорректный запрос", e.getMessage(),
-                Collections.singletonList(stackTrace), LocalDateTime.now());
+                Collections.singletonList(Arrays.toString(e.getStackTrace())), LocalDateTime.now());
     }
 
     @ExceptionHandler
@@ -146,8 +136,7 @@ public class ErrorHandler {
         log.error("Возникла непредвиденная ошибка", e);
         StringWriter out = new StringWriter();
         e.printStackTrace(new PrintWriter(out));
-        String stackTrace = out.toString();
         return new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Непредвиденная ошибка", e.getMessage(),
-                Collections.singletonList(stackTrace), LocalDateTime.now());
+                Collections.singletonList(Arrays.toString(e.getStackTrace())), LocalDateTime.now());
     }
 }
