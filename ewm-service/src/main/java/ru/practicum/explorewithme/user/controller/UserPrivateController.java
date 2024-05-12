@@ -10,7 +10,6 @@ import ru.practicum.explorewithme.user.service.UserService;
 @Validated
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/admin/users")
 public class UserPrivateController {
 
     private final UserService userService;
