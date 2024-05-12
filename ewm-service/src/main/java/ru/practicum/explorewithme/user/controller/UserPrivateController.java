@@ -6,6 +6,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.explorewithme.user.dto.UserInDto;
 import ru.practicum.explorewithme.user.dto.UserOutDto;
+import ru.practicum.explorewithme.user.dto.UserWithFollowersDto;
 import ru.practicum.explorewithme.user.service.UserService;
 
 import javax.validation.Valid;
@@ -18,26 +19,19 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/admin/users")
-public class UserController {
+public class UserPrivateController {
 
     private final UserService userService;
 
-    @GetMapping
-    public List<UserOutDto> findUsers(@RequestParam(required = false) List<Long> ids,
-                                      @PositiveOrZero @RequestParam(required = false, defaultValue = "0") Integer from,
-                                      @Positive @RequestParam(required = false, defaultValue = "10") Integer size) {
-        return userService.findUsers(ids, from, size);
-    }
-
-    @DeleteMapping(value = "/{userId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUser(@NotNull @PathVariable Long userId) {
-        userService.deleteUser(userId);
-    }
-
-    @PostMapping
+    @PostMapping(value = "/users/{userId}/followers/{followerId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserOutDto addUser(@Valid @RequestBody UserInDto inDto) {
-        return userService.addUser(inDto);
+    public UserWithFollowersDto addFollower(@PathVariable Long userId, @PathVariable Long followerId) {
+        return userService.addFollower(userId, followerId);
+    }
+
+    @DeleteMapping(value = "/users/{userId}/followers/{followerId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteFollower(@PathVariable Long userId, @PathVariable Long followerId) {
+        userService.deleteFollower(userId, followerId);
     }
 }
