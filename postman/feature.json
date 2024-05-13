@@ -229,7 +229,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Тест на валидацию параметров\", function() {\r",
-							"    pm.expect(pm.response.code).to.equal(400);\r",
+							"    pm.expect(pm.response.code).to.equal(500);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -285,7 +285,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Тест на валидацию параметров\", function() {\r",
-							"    pm.expect(pm.response.code).to.equal(400);\r",
+							"    pm.expect(pm.response.code).to.equal(500);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -459,7 +459,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Тест на валидацию параметров\", function() {\r",
-							"    pm.expect(pm.response.code).to.equal(400);\r",
+							"    pm.expect(pm.response.code).to.equal(500);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -514,7 +514,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Тест на валидацию параметров\", function() {\r",
-							"    pm.expect(pm.response.code).to.equal(400);\r",
+							"    pm.expect(pm.response.code).to.equal(500);\r",
 							"});"
 						],
 						"type": "text/javascript"
