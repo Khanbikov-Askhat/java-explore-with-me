@@ -3,7 +3,7 @@ package ru.practicum.explorewithme.category.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import javax.persistence.Id;
 import javax.persistence.*;
 
 @Data
