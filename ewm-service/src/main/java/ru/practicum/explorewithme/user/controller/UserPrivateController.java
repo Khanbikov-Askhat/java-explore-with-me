@@ -4,16 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.explorewithme.user.dto.UserInDto;
-import ru.practicum.explorewithme.user.dto.UserOutDto;
 import ru.practicum.explorewithme.user.dto.UserWithFollowersDto;
 import ru.practicum.explorewithme.user.service.UserService;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
-import java.util.List;
 
 @Validated
 @RestController
