@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.practicum.explorewithme.event.model.Event;
-import javax.persistence.Id;
+
 import javax.persistence.*;
 import java.util.List;
 

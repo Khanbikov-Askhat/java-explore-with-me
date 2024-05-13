@@ -6,7 +6,6 @@ import ru.practicum.explorewithme.compilation.model.Compilation;
 import ru.practicum.explorewithme.user.model.User;
 
 import javax.persistence.*;
-import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.List;
 

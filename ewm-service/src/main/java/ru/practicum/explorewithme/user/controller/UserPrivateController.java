@@ -10,18 +10,18 @@ import ru.practicum.explorewithme.user.service.UserService;
 @Validated
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/users")
+@RequestMapping("/admin/users")
 public class UserPrivateController {
 
     private final UserService userService;
 
-    @PostMapping(value = "/{userId}/followers/{followerId}")
+    @PostMapping(value = "/users/{userId}/followers/{followerId}")
     @ResponseStatus(HttpStatus.CREATED)
     public UserWithFollowersDto addFollower(@PathVariable Long userId, @PathVariable Long followerId) {
         return userService.addFollower(userId, followerId);
     }
 
-    @DeleteMapping(value = "/{userId}/followers/{followerId}")
+    @DeleteMapping(value = "/users/{userId}/followers/{followerId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteFollower(@PathVariable Long userId, @PathVariable Long followerId) {
         userService.deleteFollower(userId, followerId);
