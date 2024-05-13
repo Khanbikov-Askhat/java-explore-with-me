@@ -17,6 +17,8 @@ import ru.practicum.explorewithme.request.dto.ParticipationRequestDto;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -83,5 +85,28 @@ public class EventPublicController {
         EventRequestStatusUpdateResult result = eventService.changeEventRequestsStatus(userId, eventId, updateRequest);
         log.info("Обновлены запросы: {}", result);
         return result;
+    }
+
+    @GetMapping("/users/{userId}/followers/{followerId}/events")
+    public List<EventFullDto> findEventsBySubscriptionOfUser(@PathVariable Long userId,
+                                                             @PathVariable Long followerId,
+                                                             @PositiveOrZero @RequestParam(required = false, defaultValue = "0") Integer from,
+                                                             @Positive @RequestParam(required = false, defaultValue = "10") Integer size) {
+        log.info("Получен запрос GET /users/{userId}/followers/{followerId}/events c параметрами: userId = {}, followerId = {}, from = {}, size = {}", userId, followerId, from, size);
+        List<EventFullDto> events = eventService.findEventsBySubscriptionOfUser(userId, followerId, from, size);
+        log.info("Получены события: {}", events);
+        return events;
+    }
+
+
+    @GetMapping("/users/followers/{followerId}/events")
+    public List<EventShortDto> findEventsByAllSubscriptions(@PathVariable Long followerId,
+                                                            @RequestParam(required = false, defaultValue = "NEW") String sort,
+                                                            @PositiveOrZero @RequestParam(required = false, defaultValue = "0") Integer from,
+                                                            @Positive @RequestParam(required = false, defaultValue = "10") Integer size) {
+        log.info("Получен запрос GET /users/followers/{followerId}/events c параметрами: followerId = {}, sort = {}, from = {}, size = {}", followerId, sort, from, size);
+        List<EventShortDto> events = eventService.findEventsByAllSubscriptions(followerId, sort, from, size);
+        log.info("Получены события: {}", events);
+        return events;
     }
 }
