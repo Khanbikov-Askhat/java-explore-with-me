@@ -38,8 +38,8 @@ public class UserAdminController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@NotNull @PathVariable Long userId) {
         log.info("Получен запрос DELETE /admin/users/{}", userId);
-        log.info("Удален пользователь: {}", userId);
         userService.deleteUser(userId);
+        log.info("Удален пользователь: {}", userId);
     }
 
     @PostMapping

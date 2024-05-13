@@ -61,7 +61,7 @@ public class CompilationController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCompilation(@PathVariable Long compId) {
         log.info("Получен запрос DELETE /admin/compilations/{}", compId);
-        log.info("Удалена компиляция с ID: {}", compId);
         compService.deleteCompilation(compId);
+        log.info("Удалена компиляция с ID: {}", compId);
     }
 }

@@ -92,14 +92,21 @@ public class EventPublicController {
                                                              @PathVariable Long followerId,
                                                              @PositiveOrZero @RequestParam(required = false, defaultValue = "0") Integer from,
                                                              @Positive @RequestParam(required = false, defaultValue = "10") Integer size) {
-        return eventService.findEventsBySubscriptionOfUser(userId, followerId, from, size);
+        log.info("Получен запрос GET /users/{userId}/followers/{followerId}/events c параметрами: userId = {}, followerId = {}, from = {}, size = {}", userId, followerId, from, size);
+        List<EventFullDto> events = eventService.findEventsBySubscriptionOfUser(userId, followerId, from, size);
+        log.info("Получены события: {}", events);
+        return events;
     }
+
 
     @GetMapping("/users/followers/{followerId}/events")
     public List<EventShortDto> findEventsByAllSubscriptions(@PathVariable Long followerId,
                                                             @RequestParam(required = false, defaultValue = "NEW") String sort,
                                                             @PositiveOrZero @RequestParam(required = false, defaultValue = "0") Integer from,
                                                             @Positive @RequestParam(required = false, defaultValue = "10") Integer size) {
-        return eventService.findEventsByAllSubscriptions(followerId, sort, from, size);
+        log.info("Получен запрос GET /users/followers/{followerId}/events c параметрами: followerId = {}, sort = {}, from = {}, size = {}", followerId, sort, from, size);
+        List<EventShortDto> events = eventService.findEventsByAllSubscriptions(followerId, sort, from, size);
+        log.info("Получены события: {}", events);
+        return events;
     }
 }

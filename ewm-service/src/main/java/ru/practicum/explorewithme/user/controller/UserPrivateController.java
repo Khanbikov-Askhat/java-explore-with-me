@@ -29,7 +29,7 @@ public class UserPrivateController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteFollower(@PathVariable Long userId, @PathVariable Long followerId) {
         log.info("Получен запрос DELETE /users/{}/followers/{}", userId, followerId);
-        log.info("Удален подписчик: {}", userId);
         userService.deleteFollower(userId, followerId);
+        log.info("Удален подписчик: {}", userId);
     }
 }
